@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Debate Arena</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">⚖</div><div><b>AI Debate Arena</b><small>Two models. One better answer.</small></div></div>
+      <button id="newDebate" class="new-btn">＋ New debate</button>
+      <div class="side-label">RECENT DEBATES</div>
+      <div id="history" class="history"><p class="muted">Loading history…</p></div>
+      <div class="side-foot">API keys stay on your server.</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><span class="live-dot"></span> Ready to debate</div>
+        <div class="mode-wrap"><label for="mode">Mode</label>
+          <select id="mode"><option value="full">Full debate</option><option value="quick">Quick comparison</option></select>
+        </div>
+      </header>
+
+      <section class="welcome" id="welcome">
+        <div class="eyebrow">INDEPENDENT THINKING · CROSS-REVIEW · FINAL VERDICT</div>
+        <h1>Better answers emerge<br><span>from a good debate.</span></h1>
+        <p>Give ChatGPT and Gemini the same challenge. Compare their independent answers, let them critique each other, then get an impartial synthesis.</p>
+      </section>
+
+      <section id="result" class="result hidden">
+        <div class="result-head"><div><div class="eyebrow">DEBATE RESULT</div><h2>Your challenge</h2></div><span id="status" class="status">Completed</span></div>
+        <div id="task" class="task"></div>
+        <div class="answer-grid">
+          <article class="panel openai"><div class="panel-title"><span class="avatar">O</span><div><b>ChatGPT</b><small>Independent answer</small></div></div><div id="openaiAnswer" class="prose"></div></article>
+          <article class="panel gemini"><div class="panel-title"><span class="avatar">G</span><div><b>Gemini</b><small>Independent answer</small></div></div><div id="geminiAnswer" class="prose"></div></article>
+        </div>
+        <div id="reviews" class="answer-grid review-grid">
+          <article class="panel"><div class="panel-title"><b>ChatGPT's review of Gemini</b></div><div id="openaiReview" class="prose"></div></article>
+          <article class="panel"><div class="panel-title"><b>Gemini's review of ChatGPT</b></div><div id="geminiReview" class="prose"></div></article>
+        </div>
+        <article class="panel verdict"><div class="panel-title"><span class="avatar judge">⚖</span><div><b>Final judge</b><small>Evidence-based synthesis</small></div></div><div id="verdict" class="prose"></div></article>
+      </section>
+
+      <section id="loading" class="loading hidden">
+        <div class="spinner"></div><h3 id="loadingTitle">The arena is working…</h3>
+        <p id="loadingText">Getting independent answers from both models.</p>
+        <div class="steps"><span class="active">Independent answers</span><span>Cross-review</span><span>Final verdict</span></div>
+      </section>
+
+      <div class="composer-wrap">
+        <div class="composer">
+          <textarea id="prompt" rows="3" placeholder="Enter a problem, idea, code task, research question, or decision…"></textarea>
+          <div class="composer-bottom"><span>Full debate uses more API tokens than quick comparison.</span><button id="run" class="run-btn">Start debate <span>→</span></button></div>
+        </div>
+        <div id="error" class="error hidden"></div>
+        <div class="disclaimer">AI outputs can be wrong. Verify important claims and test generated code before using it.</div>
+      </div>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
